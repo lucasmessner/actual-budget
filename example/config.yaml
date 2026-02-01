@@ -13,4 +13,4 @@ map:
 options:
   db_path: "/config/actual_budget/data"
   port: 3000
-webui: "http://[HOST]:[PORT]"
+webui: "http://127.0.0.1:3000"
