@@ -3,8 +3,6 @@ version: "1.0"
 slug: actual_budget
 description: "Actual Budget Add-on für Home Assistant auf Raspberry Pi 4"
 arch:
-  - armv7
-  - armhf
   - aarch64
 startup: "services"
 boot: "auto"
@@ -15,3 +13,4 @@ map:
 options:
   db_path: "/config/actual_budget/data"
   port: 3000
+webui: "http://[HOST]:[PORT]"
