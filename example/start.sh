@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Verzeichnis für persistente Daten erstellen
 mkdir -p /config/actual_budget/data
 
 # Actual Budget starten
