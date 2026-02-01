@@ -1,12 +1,24 @@
-# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-ARG BUILD_FROM
-FROM $BUILD_FROM
+# Dockerfile für Raspberry Pi 4 (armv7/arm64)
+FROM python:3.12-slim
 
-# Execute during the build of the image
-ARG TEMPIO_VERSION BUILD_ARCH
-RUN \
-    curl -sSLf -o /usr/bin/tempio \
-    "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}"
+# Setze Arbeitsverzeichnis
+WORKDIR /app
 
-# Copy root filesystem
-COPY rootfs /
+# Abhängigkeiten installieren
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Actual Budget installieren
+RUN pip install --no-cache-dir actual-budget
+
+# Füge Startskript hinzu
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Port freigeben (Actual Budget standardmäßig 3000)
+EXPOSE 3000
+
+# Container-Start
+CMD ["/start.sh"]
