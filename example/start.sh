@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Verzeichnisse erstellen
+# Verzeichnis für Daten erstellen
 mkdir -p /config/actual_budget/data
 
-# Start Actual Budget
-exec actual-budget --data-dir /config/actual_budget/data --port 3000
+# Actual Budget starten
+npm start -- --data-dir /config/actual_budget/data --port 3000
