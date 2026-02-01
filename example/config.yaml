@@ -1,17 +1,17 @@
-# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
-name: Example add-on
-version: "1.2.0"
-slug: example
-description: Example add-on
-url: "https://github.com/home-assistant/addons-example/tree/main/example"
+name: Actual Budget
+version: "1.0"
+slug: actual_budget
+description: "Actual Budget Add-on für Home Assistant auf Raspberry Pi 4"
 arch:
+  - armv7
+  - armhf
   - aarch64
-  - amd64
-init: false
+startup: "services"
+boot: "auto"
+ports:
+  3000/tcp: 3000
 map:
-  - share:rw
+  config: /config/actual_budget
 options:
-  message: "Hello world..."
-schema:
-  message: "str?"
-image: "ghcr.io/home-assistant/{arch}-addon-example"
+  db_path: "/config/actual_budget/data"
+  port: 3000
